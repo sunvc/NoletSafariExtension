@@ -2,12 +2,37 @@
     -webkit-user-select: none;
     -webkit-user-drag: none;
     cursor: default;
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
 }
 
 :root {
     color-scheme: light dark;
+    --spacing: 24px;
+    --border-radius: 12px;
+    --primary-color: #15181b;
+    --primary-hover: #0056CC;
+    --success-color: #34C759;
+    --warning-color: #FF9500;
+    --danger-color: #FF3B30;
+    --text-primary: #1D1D1F;
+    --text-secondary: #6E6E73;
+    --background: #FFFFFF;
+    --surface: #F2F2F7;
+    --border: #D1D1D6;
+    --shadow: rgba(0, 0, 0, 0.1);
+}
 
-    --spacing: 20px;
+@media (prefers-color-scheme: dark) {
+    :root {
+        --text-primary: #F2F2F7;
+        --text-secondary: #8E8E93;
+        --background: #000000;
+        --surface: #1C1C1E;
+        --border: #38383A;
+        --shadow: rgba(0, 0, 0, 0.3);
+    }
 }
 
 html {
@@ -17,33 +42,22 @@ html {
 body {
     display: flex;
     align-items: center;
-    justify-content: center;
+    justify-content: flex-start;
     flex-direction: column;
-
     gap: var(--spacing);
-    margin: 0 calc(var(--spacing) * 2);
+    margin: 0;
     height: 100%;
-
-    font: -apple-system-short-body;
+    min-height: 100vh;
+    padding: 12px;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'SF Pro Text', system-ui, sans-serif;
+    font-size: 17px;
+    line-height: 1.47;
+    color: var(--text-primary);
+    background: var(--background);
     text-align: center;
 }
 
-body:not(.platform-mac, .platform-ios) :is(.platform-mac, .platform-ios) {
-    display: none;
-}
-
-body.platform-ios .platform-mac {
-    display: none;
-}
-
-body.platform-mac .platform-ios {
-    display: none;
-}
-
-body.platform-ios .platform-mac {
-    display: none;
-}
-
+/* 状态控制 */
 body:not(.state-on, .state-off) :is(.state-on, .state-off) {
     display: none;
 }
@@ -56,6 +70,101 @@ body.state-off :is(.state-on, .state-unknown) {
     display: none;
 }
 
-button {
-    font-size: 1em;
+/* Header 容器样式 */
+.header-container {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 12px 21px;
+    margin-top: 15px;
 }
+
+/* Logo 样式 */
+.logo svg {
+    width: 72px;
+    height: 72px;
+    border-radius: 16px;
+    background: linear-gradient(45deg, #6120d1, #4c3ee0, #2871fa);
+    box-shadow: 0 4px 16px var(--shadow);
+}
+
+.header {
+    text-align: left;
+}
+
+h1 {
+    margin: 0;
+    font-size: 28px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.02em;
+}
+
+.subtitle {
+    margin: 0;
+    font-size: 15px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    line-height: 1.4;
+}
+
+/* 状态消息 */
+.status-container {
+    width: 100%;
+    max-width: 320px;
+}
+
+.status-message {
+    margin: 0;
+    padding: 16px;
+    border-radius: var(--border-radius);
+    font-size: 14px;
+    font-weight: 500;
+    line-height: 1.4;
+}
+
+.state-unknown .status-message {
+    background: var(--surface);
+    color: var(--text-secondary);
+    border: 1px solid var(--border);
+}
+
+.state-on .status-message {
+    background: rgba(52, 199, 89, 0.1);
+    color: var(--success-color);
+    border: 1px solid rgba(52, 199, 89, 0.2);
+}
+
+.state-off .status-message {
+    background: rgba(255, 149, 0, 0.1);
+    color: var(--warning-color);
+    border: 1px solid rgba(255, 149, 0, 0.2);
+}
+
+/* Button style */
+button {
+    border: none;
+    border-radius: 12px;
+    padding: 12px 27px;
+    width: 100%;
+    max-width: 320px;
+    font-size: 16px;
+    text-transform: uppercase;
+    cursor: pointer;
+    color: white;
+    background-color: #1976d2;
+    outline: none;
+    position: relative;
+    overflow: hidden;
+}
+
+button:hover {
+    background-color: #1075db;
+}
+
+button:active {
+    background-color: #1976d2;
+    opacity: 0.9;
+}
+
+

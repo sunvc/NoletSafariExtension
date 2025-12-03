@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <title>NoLet+</title>
     <link rel="stylesheet" href="../Style.css">
     <script src="../Script.js" defer></script>
 </head>
-<body>
-    <img src="../logo.svg" width="128" height="128" alt="NoletSafari 图标">
-    <p class="platform-ios">你可以在设置中开启 NoletSafari 的 Safari 扩展。</p>
-    <p class="platform-mac state-unknown">你可以在 Safari 扩展偏好设置中开启 NoletSafari 扩展。</p>
-    <p class="platform-mac state-on">NoletSafari 扩展当前已开启。你可以在 Safari 扩展偏好设置中关闭它。</p>
-    <p class="platform-mac state-off">NoletSafari 扩展当前已关闭。你可以在 Safari 扩展偏好设置中开启它。</p>
-    <button class="platform-mac open-preferences">退出并打开 Safari 扩展偏好设置…</button>
+
+<body onContextMenu="return false;">
+    <div class="header-container">
+        <div class="logo">
+            <img src="../logo.svg" width="72" height="72" alt="NoletSafari 图标">
+        </div>
+
+        <div class="header">
+            <h1>NoLet+</h1>
+            <p class="subtitle">将网页内容推送到你的 iPhone</p>
+        </div>
+    </div>
+
+    <div class="status-container">
+        <p class="status-message state-unknown">
+            你可以在 Safari 扩展设置中开启 NoLet 推送扩展。
+        </p>
+        <p class="status-message state-on">
+            NoLet 推送扩展已开启，感谢使用！
+        </p>
+        <p class="status-message state-off">
+            NoLet 推送扩展已关闭。你可以在 Safari 扩展设置中将其开启。
+        </p>
+    </div>
+
+    <button class="open-preferences">
+        <span>为 Safari 启用</span>
+    </button>
 </body>
+
 </html>

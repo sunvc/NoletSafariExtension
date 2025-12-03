@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <title>NoLet+</title>
     <link rel="stylesheet" href="../Style.css">
     <script src="../Script.js" defer></script>
 </head>
-<body>
-    <img src="../logo.svg" width="128" height="128" alt="NoletSafari Icon">
-    <p class="platform-ios">設定でNoletSafariのSafari拡張機能を有効にできます。</p>
-    <p class="platform-mac state-unknown">Safariの拡張機能設定でNoletSafariの拡張機能を有効にできます。</p>
-    <p class="platform-mac state-on">NoletSafariの拡張機能は現在オンになっています。Safariの拡張機能設定でオフにできます。</p>
-    <p class="platform-mac state-off">NoletSafariの拡張機能は現在オフになっています。Safariの拡張機能設定でオンにできます。</p>
-    <button class="platform-mac open-preferences">終了してSafariの拡張機能設定を開く…</button>
+
+<body onContextMenu="return false;">
+    <div class="header-container">
+        <div class="logo">
+            <img src="../logo.svg" width="128" height="128" alt="NoletSafari Icon">
+        </div>
+
+        <div class="header">
+            <h1>NoLet+</h1>
+            <p class="subtitle">ウェブコンテンツをiPhoneにプッシュ</p>
+        </div>
+    </div>
+
+    <div class="status-container">
+        <p class="status-message state-unknown">
+            Safariの拡張機能設定でNoLetの拡張機能をオンにできます。
+        </p>
+        <p class="status-message state-on">
+            NoLetの拡張機能は現在オンになっています。ご利用ありがとうございます！
+        </p>
+        <p class="status-message state-off">
+            NoLetの拡張機能は現在オフになっています。Safariの拡張機能設定でオンにできます。
+        </p>
+    </div>
+
+    <button class="open-preferences">
+        <span>Safariで有効にする</span>
+    </button>
 </body>
+
 </html>

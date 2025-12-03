@@ -1,20 +1,42 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
-
+    <title>NoLet+</title>
     <link rel="stylesheet" href="../Style.css">
     <script src="../Script.js" defer></script>
 </head>
-<body>
-    <img src="../logo.svg" width="128" height="128" alt="NoletSafari 아이콘">
-    <p class="platform-ios">설정에서 NoletSafari의 Safari 확장 기능을 켤 수 있습니다.</p>
-    <p class="platform-mac state-unknown">Safari 확장 기능 환경설정에서 NoletSafari의 확장 기능을 켤 수 있습니다.</p>
-    <p class="platform-mac state-on">NoletSafari의 확장 기능이 현재 켜져 있습니다. Safari 확장 기능 환경설정에서 끌 수 있습니다.</p>
-    <p class="platform-mac state-off">NoletSafari의 확장 기능이 현재 꺼져 있습니다. Safari 확장 기능 환경설정에서 켤 수 있습니다.</p>
-    <button class="platform-mac open-preferences">종료하고 Safari 확장 기능 환경설정 열기…</button>
+
+<body onContextMenu="return false;">
+    <div class="header-container">
+        <div class="logo">
+            <img src="../logo.svg" width="128" height="128" alt="NoletSafari Icon">
+        </div>
+
+        <div class="header">
+            <h1>NoLet+</h1>
+            <p class="subtitle">웹 콘텐츠를 iPhone으로 푸시</p>
+        </div>
+    </div>
+
+    <div class="status-container">
+        <p class="status-message state-unknown">
+            Safari 확장 프로그램 환경설정에서 NoLet 확장 프로그램을 켤 수 있습니다.
+        </p>
+        <p class="status-message state-on">
+            NoLet 확장 프로그램이 현재 켜져 있습니다. 이용해 주셔서 감사합니다!
+        </p>
+        <p class="status-message state-off">
+            NoLet 확장 프로그램이 현재 꺼져 있습니다. Safari 확장 프로그램 환경설정에서 켤 수 있습니다.
+        </p>
+    </div>
+
+    <button class="open-preferences">
+        <span>Safari에서 활성화</span>
+    </button>
 </body>
+
 </html>
