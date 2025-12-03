@@ -9,73 +9,109 @@ import WebKit
 
 #if os(iOS)
 import UIKit
+
 typealias PlatformViewController = UIViewController
 #elseif os(macOS)
 import Cocoa
 import SafariServices
+
 typealias PlatformViewController = NSViewController
 #endif
 
 let extensionBundleIdentifier = "me.uuneo.Meows.Extension"
 
 class ViewController: PlatformViewController, WKNavigationDelegate, WKScriptMessageHandler {
-
     @IBOutlet var webView: WKWebView!
+
+    #if os(macOS)
+    var extensionStateTimer: Timer?
+    var lastExtensionEnabledState: Bool?
+    
+    func startExtensionStateMonitor() {
+        extensionStateTimer = Timer.scheduledTimer(
+            timeInterval: 0.5,
+            target: self,
+            selector: #selector(checkExtensionState),
+            userInfo: nil,
+            repeats: true
+        )
+    }
+    
+
+    @objc func checkExtensionState(_ timer: Timer) {
+        SFSafariExtensionManager
+            .getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { state, error in
+                guard let state = state, error == nil, self.lastExtensionEnabledState != state.isEnabled else {
+                    return
+                }
+                
+
+                DispatchQueue.main.async {
+                    guard let webView = self.webView else { return }
+                    self.lastExtensionEnabledState = state.isEnabled
+
+                    if #available(macOS 13, *) {
+                        webView.evaluateJavaScript("show('mac', \(state.isEnabled), true)")
+                    } else {
+                        webView.evaluateJavaScript("show('mac', \(state.isEnabled), false)")
+                    }
+                }
+            }
+    }
+
+    #endif
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        self.webView.navigationDelegate = self
+        webView.navigationDelegate = self
 
-#if os(iOS)
-        self.webView.scrollView.isScrollEnabled = false
-#endif
+        #if os(iOS)
+        webView.scrollView.isScrollEnabled = false
+        #endif
 
-        self.webView.configuration.userContentController.add(self, name: "controller")
+        webView.configuration.userContentController.add(self, name: "controller")
 
-        self.webView.loadFileURL(Bundle.main.url(forResource: "Main", withExtension: "html")!, allowingReadAccessTo: Bundle.main.resourceURL!)
+        webView.loadFileURL(
+            Bundle.main.url(forResource: "Main", withExtension: "html")!,
+            allowingReadAccessTo: Bundle.main.resourceURL!
+        )
     }
 
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
-#if os(iOS)
+        #if os(iOS)
         webView.evaluateJavaScript("show('ios')")
-#elseif os(macOS)
+        #elseif os(macOS)
         webView.evaluateJavaScript("show('mac')")
 
-        SFSafariExtensionManager.getStateOfSafariExtension(withIdentifier: extensionBundleIdentifier) { (state, error) in
-            guard let state = state, error == nil else {
-                // Insert code to inform the user that something went wrong.
-                return
-            }
-
-            DispatchQueue.main.async {
-                if #available(macOS 13, *) {
-                    webView.evaluateJavaScript("show('mac', \(state.isEnabled), true)")
-                } else {
-                    webView.evaluateJavaScript("show('mac', \(state.isEnabled), false)")
-                }
-            }
-        }
-#endif
+        startExtensionStateMonitor()
+        #endif
     }
 
-    func userContentController(_ userContentController: WKUserContentController, didReceive message: WKScriptMessage) {
-#if os(macOS)
-        if (message.body as! String != "open-preferences") {
+    func userContentController(
+        _ userContentController: WKUserContentController,
+        didReceive message: WKScriptMessage
+    ) {
+        let body = message.body as! String
+        #if os(macOS)
+        if body  == "open-preferences" {
+            SFSafariApplication
+                .showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
+                    guard error == nil else {
+                        // Insert code to inform the user that something went wrong.
+                        return
+                    }
+    
+                   
+                }
             return
-        }
-
-        SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
-            guard error == nil else {
-                // Insert code to inform the user that something went wrong.
-                return
-            }
-
+        }else if body  == "close"{
             DispatchQueue.main.async {
                 NSApp.terminate(self)
             }
         }
-#endif
-    }
 
+        
+        #endif
+    }
 }

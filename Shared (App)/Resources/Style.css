@@ -141,7 +141,7 @@ h1 {
     border: 1px solid rgba(255, 149, 0, 0.2);
 }
 
-/* Button style */
+/* Base button */
 button {
     border: none;
     border-radius: 12px;
@@ -149,22 +149,35 @@ button {
     width: 100%;
     max-width: 320px;
     font-size: 16px;
+    font-weight: 600;
     text-transform: uppercase;
     cursor: pointer;
-    color: white;
-    background-color: #1976d2;
+    color: #fff;
+
+    background: #1976d2;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.25);
+
     outline: none;
     position: relative;
     overflow: hidden;
+
+    transition: 
+        background-color 0.25s ease,
+        box-shadow 0.25s ease,
+        transform 0.15s ease;
 }
 
+/* Hover */
 button:hover {
-    background-color: #1075db;
+    background-color: #0d60b8;
+    box-shadow: 0 6px 18px rgba(25, 118, 210, 0.35);
+    transform: translateY(-2px);
 }
 
+/* Pressed */
 button:active {
     background-color: #1976d2;
-    opacity: 0.9;
+    transform: scale(0.97);
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.2);
+    opacity: 0.95;
 }
-
-
