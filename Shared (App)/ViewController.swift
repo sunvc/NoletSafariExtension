@@ -66,8 +66,13 @@ class ViewController: PlatformViewController, WKNavigationDelegate, WKScriptMess
         }
 
         SFSafariApplication.showPreferencesForExtension(withIdentifier: extensionBundleIdentifier) { error in
-            if let error = error {
-                print("Failed to open Safari extension preferences: \(error)")
+            guard error == nil else {
+                // Insert code to inform the user that something went wrong.
+                return
+            }
+
+            DispatchQueue.main.async {
+                NSApp.terminate(self)
             }
         }
 #endif

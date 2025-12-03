@@ -1,6 +1,5 @@
 function show(platform, enabled, useSettingsInsteadOfPreferences) {
    
-
     if (typeof enabled === "boolean") {
         document.body.classList.toggle(`state-on`, enabled);
         document.body.classList.toggle(`state-off`, !enabled);
@@ -15,3 +14,4 @@ function openPreferences() {
 }
 
 document.querySelector("button.open-preferences").addEventListener("click", openPreferences);
+
