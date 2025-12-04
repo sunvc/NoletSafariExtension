@@ -1,12 +1,12 @@
 
-/* Class = "NSMenuItem"; title = "NoletSafari"; ObjectID = "1Xt-HY-uBw"; */
-"1Xt-HY-uBw.title" = "NoletSafari";
+/* Class = "NSMenuItem"; title = "NoLet+"; ObjectID = "1Xt-HY-uBw"; */
+"1Xt-HY-uBw.title" = "NoLet+";
 
-/* Class = "NSMenuItem"; title = "Quit NoletSafari"; ObjectID = "4sb-4s-VLi"; */
-"4sb-4s-VLi.title" = "NoletSafari を終了";
+/* Class = "NSMenuItem"; title = "Quit NoLet+"; ObjectID = "4sb-4s-VLi"; */
+"4sb-4s-VLi.title" = "NoLet+ を終了";
 
-/* Class = "NSMenuItem"; title = "About NoletSafari"; ObjectID = "5kV-Vb-QxS"; */
-"5kV-Vb-QxS.title" = "NoletSafari について";
+/* Class = "NSMenuItem"; title = "About NoLet+"; ObjectID = "5kV-Vb-QxS"; */
+"5kV-Vb-QxS.title" = "NoLet+ について";
 
 /* Class = "NSMenu"; title = "Main Menu"; ObjectID = "AYu-sK-qS6"; */
 "AYu-sK-qS6.title" = "メインメニュー";
@@ -14,23 +14,23 @@
 /* Class = "NSMenu"; title = "Help"; ObjectID = "F2S-fz-NVQ"; */
 "F2S-fz-NVQ.title" = "ヘルプ";
 
-/* Class = "NSMenuItem"; title = "NoletSafari Help"; ObjectID = "FKE-Sm-Kum"; */
-"FKE-Sm-Kum.title" = "NoletSafari ヘルプ";
+/* Class = "NSMenuItem"; title = "NoLet+ Help"; ObjectID = "FKE-Sm-Kum"; */
+"FKE-Sm-Kum.title" = "NoLet+ ヘルプ";
 
-/* Class = "NSWindow"; title = "NoletSafari"; ObjectID = "IQv-IB-iLA"; */
-"IQv-IB-iLA.title" = "NoletSafari";
+/* Class = "NSWindow"; title = "NoLet+"; ObjectID = "IQv-IB-iLA"; */
+"IQv-IB-iLA.title" = "NoLet+";
 
 /* Class = "NSMenuItem"; title = "Show All"; ObjectID = "Kd2-mp-pUS"; */
 "Kd2-mp-pUS.title" = "すべてを表示";
 
-/* Class = "NSMenuItem"; title = "Hide NoletSafari"; ObjectID = "Olw-nP-bQN"; */
-"Olw-nP-bQN.title" = "NoletSafari を隠す";
+/* Class = "NSMenuItem"; title = "Hide NoLet+"; ObjectID = "Olw-nP-bQN"; */
+"Olw-nP-bQN.title" = "NoLet+ を隠す";
 
 /* Class = "NSMenuItem"; title = "Hide Others"; ObjectID = "Vdr-fp-XzO"; */
 "Vdr-fp-XzO.title" = "ほかを隠す";
 
-/* Class = "NSMenu"; title = "NoletSafari"; ObjectID = "uQy-DD-JDr"; */
-"uQy-DD-JDr.title" = "NoletSafari";
+/* Class = "NSMenu"; title = "NoLet+"; ObjectID = "uQy-DD-JDr"; */
+"uQy-DD-JDr.title" = "NoLet+";
 
 /* Class = "NSMenuItem"; title = "Help"; ObjectID = "wpr-3q-Mcd"; */
 "wpr-3q-Mcd.title" = "ヘルプ";
